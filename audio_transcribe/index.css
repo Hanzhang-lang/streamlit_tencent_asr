@@ -1,0 +1,142 @@
+.content-box .content{
+    width: 100%;
+    overflow: hidden;
+    margin: 100px auto;
+}
+.content .content-item {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.left-content {
+    width: 100%;
+    height: 300px;
+}
+.connecting {
+    color: #999;
+    margin: 50px 0;
+}
+.recognizing {
+    color: #999;
+    margin: 0 10px;
+}
+.content .content-item .button {
+    background: #187cff;
+    border: 1px solid #478eea;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+    margin: 50px 0;
+}
+.button.end-btn {
+    display: none;
+}
+.recognize-content {
+    height: 200px;
+    width: 360px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: auto;
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+.display-none {
+    display: none;
+}
+
+.record-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+/* 按钮点击时的样式变化 */
+.record-btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.iconfont.icon-maikefeng1 {
+    font-size: 36px; /* 或者可以使用更大或更小的值 */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    display: inline-block;
+}
+.iconfont.icon-maikefeng1:hover{
+background-color: #e0e0e0;
+}
+
+.voice-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#record-btn {
+    border-radius: 0.25rem;
+    margin: 0;
+    line-height: 1.4;
+    color: inherit;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid rgba(49, 51, 63, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    height: 40px;
+    width: 100%;
+}
+
+#record-btn:hover {
+    border-color: rgb(255, 75, 75);
+}
+
+
+#record-btn i {
+    margin-right: 0.5rem;
+}
+
+#record-btn:active i {
+    transform: scale(0.8);
+}
+
+#record-btn:active span {
+    opacity: 0;
+}
+
+#record-btn.recording {
+    background-color: transparent;
+    color: black;
+    box-shadow: inset 0 0 1.25rem red;
+}
+
+#record-btn.recording i {
+    animation: pulse 1s infinite;
+}
+
+#record-btn.recording span {
+    display: none;
+}

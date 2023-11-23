@@ -1,0 +1,77 @@
+<html>
+    <head><link rel="stylesheet" href="index.css"></head>
+    <!-- <link rel="stylesheet" type="text/css" href="semantic.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/c/font_4341956_w1tr6j8oz1p.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+    <body>
+    <!-- Set up your HTML here -->
+    <div class="voice-div">
+      <button id="record-btn">
+          <i class="fa fa-microphone"></i>
+      </button>
+    <div class="content-box">
+        <div class="content">
+            <div class="content-item">
+                <div id="recognizeText" class="recognize-content">识别结果</div>
+            </div>
+        </div>
+    </div>
+    <script>
+      // ----------------------------------------------------
+      // Just copy/paste these functions as-is:
+
+      function sendMessageToStreamlitClient(type, data) {
+        var outData = Object.assign({
+          isStreamlitMessage: true,
+          type: type,
+        }, data);
+        window.parent.postMessage(outData, "*");
+      }
+
+      function init() {
+        sendMessageToStreamlitClient("streamlit:componentReady", {apiVersion: 1});
+      }
+
+      function setFrameHeight(height) {
+        sendMessageToStreamlitClient("streamlit:setFrameHeight", {height: height});
+      }
+
+      // The `data` argument can be any JSON-serializable value.
+      function sendDataToPython(data) {
+        sendMessageToStreamlitClient("streamlit:setComponentValue", data);
+      }
+
+      // ----------------------------------------------------
+      // Now modify this part of the code to fit your needs:
+
+
+      // data is any JSON-serializable value you sent from Python,
+      // and it's already deserialized for you.
+      function onDataFromPython(event) {
+        if (event.data.type !== "streamlit:render") return;
+        let stream = event.data.args.stream;  // Access values sent from Python here!
+      }
+      // Hook things up!
+      window.addEventListener("message", onDataFromPython);
+      init();
+
+      // Hack to autoset the iframe height.
+      window.addEventListener("load", function() {
+        window.setTimeout(function() {
+          setFrameHeight(document.documentElement.clientHeight)
+        }, 0);
+      });
+
+      // Optionally, if the automatic height computation fails you, give this component a height manually
+      // by commenting out below:
+      //setFrameHeight(200);
+    </script>
+    <script src="jquery.js"></script>
+    <script src="speechrecognizer.js"></script>
+    <script src="config.js"></script>
+    <script src="asrauthentication.js"></script>
+    <script type="module" src="index.js"></script>
+    <script src="semantic.min.js"></script>
+  </body>
+</html>
