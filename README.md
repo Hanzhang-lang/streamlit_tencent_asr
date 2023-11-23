@@ -1,0 +1,2 @@
+# streamlit_tencent_asr
+该组件实现了腾讯ASR功能，可以直接作为组件在Streamlit中使用。
